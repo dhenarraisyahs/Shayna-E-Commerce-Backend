@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Transaction extends Model
+
+class Tansaction extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name', 'uuid','email','number','address','transaction_total','transaction_status'
     ];
@@ -13,4 +17,9 @@ class Transaction extends Model
     protected $hidden = [
         'created_at','updated_at'
     ];
+
+    public function details()
+    {
+        return $this->hasMany(TransactionDetail::class, 'transaction_id');
+    }
 }
