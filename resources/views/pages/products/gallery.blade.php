@@ -8,8 +8,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="box-title">
-                        Product List
-                    </h4>
+                        Product Photo List
+                    </h4><small> {{$product->name}}</small>
                 </div>
                 <div class="card-body">
                     <div class="table-stats order-table ov-h">
@@ -18,9 +18,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
+                                    <th>Photo</th>
+                                    <th>Default</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -28,19 +27,11 @@
                                 @forelse ($items as $item)
                                 <tr>
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->type}}</td>
-                                    <td>{{$item->quantity}}</td>
-                                    <td>${{$item->price}}</td>
+                                    <td>{{$item->product->name}}</td>
+                                    <td> <img src="{{url($item->photo)}}"  alt=""> </td>
+                                    <td>{{$item->is_default ? "Yes" : "No"}}</td>
                                     <td>
-                                        <a href="{{ route('products.gallery',$item->id) }}" class="btn btn-info btn-sm">
-                                            <i class="fa fa-picture-o"></i>
-                                        </a>
-                                        <a href="{{ route('products.edit',$item->id) }}"
-                                            class="btn btn-warning btn-sm">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <form action="{{ route('products.destroy',$item->id) }}" method="POST"
+                                        <form action="{{ route('product-galleries.destroy',$item->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('delete')
@@ -53,7 +44,7 @@
                                 @empty
                                 <tr>
                                     <td colspan="6">
-                                        <div class="alert alert-secondary" role="alert">
+                                        <div class="alert alert-secondary text-center" role="alert">
                                             Data Tidak Ditemukan!
                                         </div>
                                     </td>
