@@ -79,6 +79,13 @@ class TransactionController extends Controller
         return view('pages.transactions.edit')->with([
             'item' =>$item
         ]);
+
+        // $item = Tansaction::with('details.product')->findOrFail($id);
+        // // dd($item);
+
+        // return view('pages.transactions.show')->with([
+        //     'item' => $item
+        // ]);
     }
 
     /**
@@ -106,7 +113,10 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Tansaction::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('transaction.index');
     }
 
     public function setStatus(Request $request, $id){

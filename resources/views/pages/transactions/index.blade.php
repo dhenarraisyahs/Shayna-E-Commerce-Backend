@@ -52,7 +52,7 @@
                                         </a>
                                         
                                         <a href="{{ route('transaction.status',$item->id) }}?status=FAILED" 
-                                            class="btn btn-warning btn-sm">
+                                            class="btn btn-danger btn-sm">
                                             <i class="fa fa-times"></i>
                                         </a> 
                                         @endif

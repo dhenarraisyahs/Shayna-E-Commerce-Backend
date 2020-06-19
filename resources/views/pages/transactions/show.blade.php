@@ -29,6 +29,7 @@
                     <td>Price</td>
                 </tr>
                 @foreach ($item->details as $detail)
+                
                 <tr>
                     <td>{{ $detail->product->name }}</td>
                     <td>{{ $detail->product->type }}</td>
