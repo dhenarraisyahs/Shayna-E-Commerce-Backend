@@ -88,7 +88,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TransactionRequest $request, $id)
     {
         $data = $request->all();
 
@@ -107,5 +107,19 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function setStatus(Request $request, $id){
+        $request->validate([
+            'status' => 'required|in:PENDING,SUCCESS,FAILED'
+        ]);
+
+        $item = Tansaction::findOrFail($id);
+
+        $item->transaction_status = $request->status;
+
+        $item->save();
+
+        return redirect()->route('transaction.index');
     }
 }

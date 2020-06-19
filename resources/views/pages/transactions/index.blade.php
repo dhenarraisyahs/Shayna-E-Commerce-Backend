@@ -46,14 +46,15 @@
                                     </td>
                                     <td>
                                         @if ($item->transaction_status == "PENDING")
-                                        {{--  <a href="{{ route('transaction.status',$item->id) }}?status=SUCCESS"
+                                         <a href="{{ route('transaction.status',$item->id) }}?status=SUCCESS"
                                             class="btn btn-success btn-sm">
                                             <i class="fa fa-check"></i>
                                         </a>
-                                        @else
-                                        <a href="#" class="btn btn-primary disabled">
+                                        
+                                        <a href="{{ route('transaction.status',$item->id) }}?status=FAILED" 
+                                            class="btn btn-warning btn-sm">
                                             <i class="fa fa-times"></i>
-                                        </a>  --}}
+                                        </a> 
                                         @endif
                                         <a href="#modalView" data-remote="{{ route('transaction.show',$item->id) }}"
                                             data-toggle="modal" data-target="#modalView"

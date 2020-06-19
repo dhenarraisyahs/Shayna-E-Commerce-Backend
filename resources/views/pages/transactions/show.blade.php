@@ -39,7 +39,7 @@
         </td>
     </tr>
 </table>
-{{--  <div class="row">
+ <div class="row">
     <div class="col-4">
         <a href="{{ route('transaction.status', $item->id) }}?status=SUCCESS"
             class="btn btn-success btn-block btn-sm">
@@ -58,4 +58,4 @@
         <i class="fa fa-spinner"></i> Set Pending
         </a>
     </div>
-</div>  --}}
+</div> 
