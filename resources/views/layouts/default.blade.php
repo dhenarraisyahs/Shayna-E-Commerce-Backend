@@ -41,7 +41,9 @@
     <!-- /#right-panel -->
 
     {{-- script drop here --}}
+    @stack('before-script')
     @include('includes.script')
+    @stack('after-script')
 
 </body>
 </html>
